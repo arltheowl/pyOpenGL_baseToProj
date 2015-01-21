@@ -1,0 +1,70 @@
+# ------------- Start of Program
+
+# ------------- @author : arltheowl
+
+# ------------- @about  : pygame.draw module examples drawing a Simple Face
+
+
+import pygame
+import pygame.locals
+from sys import exit
+
+#importing done
+
+# -------------
+
+pygame.init()
+face_screen=pygame.display.set_mode((800,600),pygame.DOUBLEBUF,16) # face_screen is a surface object returned by set_mode
+pygame.display.set_caption("Hello PyGame") # setting up caption
+
+#display stuffs done
+
+# -------------
+
+eye1_rect = pygame.Rect(40,30,250,100) #creating 2 Rect objects (using Rect() constructor) for future use
+eye2_rect = pygame.Rect(510,30,250,100)
+mouth_shape_rect = pygame.Rect(245,480,310,80)
+
+#creating Rect objs done
+
+# -------------
+
+
+while True:         #mainloop
+ 
+    for event_var in pygame.event.get() :
+        if event_var.type == pygame.locals.QUIT : #caution : event_var.type == ....
+            pygame.quit()
+            exit()
+
+#event handling and quitting preq. done
+            
+# -------------
+
+    eye_ball1_screen = pygame.draw.circle(face_screen,(200,15,12),(165,80),45,0)
+    eye_ball2_screen = pygame.draw.circle(face_screen,(200,15,12),(635,80),45,0)
+# draw.circle(Surface, color, pos, radius, width=0) -> Rect
+
+    eye1_screen = pygame.draw.rect(face_screen,(12,121,123),eye1_rect,3)
+    eye2_screen = pygame.draw.rect(face_screen,(12,121,123),eye2_rect,3)
+# draw.rect(Surface, color, Rect, width=0) -> Rect
+    
+    nose_screen = pygame.draw.polygon(face_screen,(60,111,30),[(400,190),(275,390),(525,390)],0) #it takes a list [pointlist]
+
+# draw.polygon(Surface, color, pointlist, width=0) -> Rect
+    
+    mouth_screen = pygame.draw.ellipse(face_screen,(120,20,40),mouth_shape_rect,0)
+
+# draw.polygon(Surface, color, pointlist, width=0) -> Rect
+
+# --$$$$$$$$$$$$$$$--
+#draw module done
+
+# -------------
+
+
+
+# --------------    
+    pygame.display.update()
+
+# -------------- End of program
